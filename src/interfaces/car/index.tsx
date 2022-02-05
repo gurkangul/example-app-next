@@ -7,11 +7,7 @@ export interface ICar {
     };
     class?: string;
     fuel?: string;
-    image?: {
-      large?: string;
-      small?: string;
-      medium?: string;
-    };
+    image?: ImageType;
   };
   id: number;
   vendor: {
@@ -21,3 +17,9 @@ export interface ICar {
   currency?: string;
   pricing: { totalPrice: number };
 }
+
+export type ImageType = {
+  large?: string;
+  medium?: string;
+  small?: string;
+};

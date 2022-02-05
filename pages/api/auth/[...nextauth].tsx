@@ -2,8 +2,8 @@ import NextAuth from "next-auth";
 // tslint:disable-next-line:<rule name>
 import CredentialsProvider from "next-auth/providers/credentials";
 import jwt_decode from "jwt-decode";
-import { API } from "../../../api";
-import { ILoginUser } from "../../../interfaces";
+import { ILoginUser } from "../../../src/interfaces";
+import { API } from "../../../src/api";
 
 const options = (req: any, res: any) => {
   return {

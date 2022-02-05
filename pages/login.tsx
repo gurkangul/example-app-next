@@ -1,6 +1,6 @@
 import { Center, Container, Space } from "@mantine/core";
 import { getSession, GetSessionParams } from "next-auth/react";
-import { AuthenticationForm } from "../components/form/register";
+import { AuthenticationForm } from "../src/components/form/register";
 
 export async function getServerSideProps(ctx: GetSessionParams | undefined) {
   const session = await getSession(ctx);

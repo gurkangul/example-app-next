@@ -1,6 +1,6 @@
 import fetchData from "./api";
 import { API_ENDPOINT } from "./endpoints";
-import { ICar, ILoginUser, ILoginUserResponse } from "../interfaces";
+import { ICar, ILoginUser, ILoginUserResponse } from "../src/hooks/interfaces";
 
 export const API = Object.freeze({
   SIGN_IN: async (credentials: ILoginUser): Promise<ILoginUserResponse> =>

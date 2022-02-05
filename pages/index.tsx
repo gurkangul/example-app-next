@@ -1,9 +1,5 @@
-import { API } from "../api";
 import { getSession } from "next-auth/react";
-import Layout from "../components/layouts";
 import { ReactElement, useEffect, useState } from "react";
-import CarCard from "../components/cards/car-card";
-import { ICar } from "../interfaces";
 import {
   AppShell,
   Center,
@@ -13,16 +9,28 @@ import {
   Header,
   Burger,
   MediaQuery,
-  Grid,
 } from "@mantine/core";
-import FilterAccordion from "../components/accordions/filter-accordion";
-import useStore from "../store";
-import { filteredCarList } from "../utility/filters";
+import { useRouter } from "next/router";
+import FilterAccordion from "../src/components/accordions/filter-accordion";
+import CarCard from "../src/components/cards/car-card";
+import { ICar } from "../src/interfaces";
+import { filteredCarList } from "../src/utility/filters";
+import useStore from "../src/store";
+import { API } from "../src/api";
+import Layout from "../src/components/layouts";
 
 export default function Home({ carList, filters }: any) {
   const [cars, setCars] = useState<ICar[]>(carList);
   const state = useStore();
   const [opened, setOpened] = useState(false);
+  const router = useRouter();
+
+  function selectCar(car: ICar) {
+    console.log("selectCar", car);
+    state.setSelectedCar(car);
+    router.push("/rent");
+  }
+
   useEffect(() => {
     filteredCarList(state.filters, carList, (carData: ICar[]) => {
       setCars(carData);
@@ -32,27 +40,27 @@ export default function Home({ carList, filters }: any) {
   return (
     <AppShell
       header={
-        <Header height={70} padding="md">
-          <div
-            style={{ display: "flex", alignItems: "center", height: "100%" }}
-          >
-            <MediaQuery largerThan="lg" styles={{ display: "none" }}>
+        <MediaQuery largerThan={1240} styles={{ display: "none" }}>
+          <Header height={70} padding="md">
+            <div
+              style={{ display: "flex", alignItems: "center", height: "100%" }}
+            >
               <Burger
                 opened={opened}
                 onClick={() => setOpened((o) => !o)}
                 size="sm"
                 mr="xl"
               />
-            </MediaQuery>
-          </div>
-        </Header>
+            </div>
+          </Header>
+        </MediaQuery>
       }
       navbar={
         <Navbar
-          hiddenBreakpoint="lg"
+          hiddenBreakpoint={1240}
           hidden={!opened}
           width={{ base: 300 }}
-          height={500}
+          height={"%100"}
           padding="xs"
         >
           <Center style={{ height: 100 }}>
@@ -75,7 +83,9 @@ export default function Home({ carList, filters }: any) {
       </Grid> */}
       <Group position="center">
         {cars.length > 0 ? (
-          cars?.map((car: ICar) => <CarCard item={car} key={car.id} />)
+          cars?.map((car: ICar) => (
+            <CarCard rentClick={selectCar} item={car} key={car.id} />
+          ))
         ) : (
           <p>No cars found</p>
         )}

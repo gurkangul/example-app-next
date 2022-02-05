@@ -1,9 +1,8 @@
-import { Accordion, Chip, Chips } from "@mantine/core";
-import React, { useEffect, useState } from "react";
+import { Accordion } from "@mantine/core";
 import { getKeyFromObjects } from "../../utility";
 import AccordionItemDetail from "./accordion-item-detail";
 
-export default function FilterAccordion({ filters, handleFilters }: any) {
+export default function FilterAccordion({ filters }: any) {
   return (
     <Accordion>
       {getKeyFromObjects(filters).map((name: string) => (

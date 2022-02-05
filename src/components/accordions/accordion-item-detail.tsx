@@ -1,4 +1,4 @@
-import { Center, Chip, Chips, Group } from "@mantine/core";
+import { Chip, Chips } from "@mantine/core";
 import React, { Fragment, useState } from "react";
 import useStore from "../../store";
 

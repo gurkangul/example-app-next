@@ -1,10 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { Paper, Text, Badge, Button, Group, Image, Space } from "@mantine/core";
-import { ICar } from "../../interfaces";
 import { currencyFormat } from "../../utility/currency";
 import Img from "../../components/image";
+import { ICar } from "../../interfaces";
 
-export default function CarCard({ item }: any) {
+export default function CarCard({
+  item,
+  rentClick,
+  isButton = true,
+}: {
+  item: ICar;
+  rentClick?: Function;
+  isButton: boolean;
+}) {
   const [car, setCar] = useState<ICar>({ ...item });
 
   return (
@@ -25,14 +33,17 @@ export default function CarCard({ item }: any) {
           <Badge>{car.car.class}</Badge>
         </Group>
         <Space h={10} />
-        <Button
-          variant="light"
-          color="green"
-          fullWidth
-          style={{ marginTop: 14 }}
-        >
-          Rent Now
-        </Button>
+        {isButton && (
+          <Button
+            variant="light"
+            color="green"
+            fullWidth
+            style={{ marginTop: 14 }}
+            onClick={() => rentClick(car)}
+          >
+            Rent Now
+          </Button>
+        )}
       </Paper>
     </div>
   );
