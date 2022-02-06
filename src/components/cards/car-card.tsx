@@ -10,7 +10,7 @@ export default function CarCard({
   isButton = true,
 }: {
   item: ICar;
-  rentClick?: Function;
+  rentClick?: any;
   isButton?: boolean;
 }) {
   const [car, setCar] = useState<ICar>({ ...item });
