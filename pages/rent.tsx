@@ -1,30 +1,39 @@
-import {
-  Button,
-  Center,
-  Container,
-  Grid,
-  Group,
-  Loader,
-  Space,
-} from "@mantine/core";
+import { Button, Group, Space } from "@mantine/core";
+import { useNotifications } from "@mantine/notifications";
 import { getSession } from "next-auth/react";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
+import { API } from "../src/api";
 import CarCard from "../src/components/cards/car-card";
 import PayoutCard from "../src/components/cards/payout-card";
 import Layout from "../src/components/layouts";
 import useCheckRoute from "../src/hooks/useCheckRoute";
 import useStore from "../src/store";
 
-export default function Rent() {
+export default function Rent({ session }: any) {
   const [payment, setPayment] = useState();
   const state = useStore();
+  const notifications = useNotifications();
 
   if (!state.selectedCar) {
     return useCheckRoute();
   }
 
-  function rentClick() {
+  console.log(state?.selectedCar);
+  async function rentClick() {
     console.log(payment);
+    let carId = state?.selectedCar?.id || 0;
+    let result = await API.ORDER(session, carId);
+    if (result.status == "Success") {
+      notifications.showNotification({
+        message: "Order successfully",
+        color: "green",
+      });
+    } else {
+      notifications.showNotification({
+        message: "Order is not successfully",
+        color: "orange",
+      });
+    }
   }
 
   return (

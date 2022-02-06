@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+     prod:
+        container_name: task_front
+        build: ./
+        environment:
+            NEXTAUTH_URL: https://task.gurkangul.dev/
+        ports:
+            - 5050:5050
+        restart: unless-stopped
+
+

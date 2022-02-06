@@ -5,6 +5,7 @@ import { GlobalStyles, MantineProvider, NormalizeCSS } from "@mantine/core";
 import { NextPage } from "next/types";
 import { ReactElement, ReactNode } from "react";
 import Head from "next/head";
+import { NotificationsProvider } from "@mantine/notifications";
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page: any) => page);
@@ -27,7 +28,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         >
           <NormalizeCSS />
           <GlobalStyles />
-          {getLayout(<Component {...pageProps} />)}
+          <NotificationsProvider>
+            {getLayout(<Component {...pageProps} />)}
+          </NotificationsProvider>
         </MantineProvider>
       </SessionProvider>
     </>

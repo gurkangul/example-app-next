@@ -1,25 +1,29 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Group, Input, SimpleGrid, Text } from "@mantine/core";
-import useStore from "../../store";
 import CreditCardInput from "../inputs/credit-card-input";
 import CreditDateInput from "../inputs/credit-date-input";
 import CreditCvcInput from "../inputs/credit-cvc-input";
 
+type CardInfo = {
+  card_number: string;
+  exp_date: string;
+  cvc: string;
+  owner_name: string;
+};
+
 export default function PayoutCard({ setPayment }: any) {
-  const state = useStore();
-  const [creditCardInfo, setCreditCardInfo] = useState({
+  const [creditCardInfo, setCreditCardInfo] = useState<CardInfo>({
     owner_name: "",
     card_number: "",
-    expiration_date: "",
+    exp_date: "",
     cvc: "",
   });
 
   useEffect(() => {
-    console.log(creditCardInfo, creditCardInfo["cvc"], !!creditCardInfo["cvc"]);
     if (
       !!creditCardInfo["owner_name"] &&
       !!creditCardInfo["card_number"] &&
-      !!creditCardInfo["expiration_date"] &&
+      !!creditCardInfo["exp_date"] &&
       !!creditCardInfo["cvc"]
     ) {
       setPayment(creditCardInfo);
@@ -50,7 +54,7 @@ export default function PayoutCard({ setPayment }: any) {
           <Group position="apart">
             <CreditDateInput
               onChange={(data: any) =>
-                setCreditCardInfo({ ...creditCardInfo, expiration_date: data })
+                setCreditCardInfo({ ...creditCardInfo, exp_date: data })
               }
             ></CreditDateInput>
             <CreditCvcInput
