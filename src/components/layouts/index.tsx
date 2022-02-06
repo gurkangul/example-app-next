@@ -8,6 +8,7 @@ import {
   Group,
   Header,
   MediaQuery,
+  Text,
   Navbar,
 } from "@mantine/core";
 import { signOut, useSession } from "next-auth/react";
@@ -89,7 +90,7 @@ export default function Layout(props: any) {
               padding="xs"
             >
               <Center style={{ height: 100 }}>
-                <Badge variant="outline">filters</Badge>
+                <Text color="gray">Filter</Text>
               </Center>
               {state.layout.filters && (
                 <FilterAccordion
