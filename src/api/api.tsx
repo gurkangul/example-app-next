@@ -1,7 +1,6 @@
 import { IEnpoint, IRequestData } from "../interfaces";
 
 export default async function fetchData(api: IEnpoint, request?: IRequestData) {
-  console.log(request, api, "aaaa");
   const customHeaders = new Headers({
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",

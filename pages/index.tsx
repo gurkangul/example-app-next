@@ -15,13 +15,11 @@ export default function Home({ carList, filters, session }: any) {
   const router = useRouter();
 
   function selectCar(car: ICar) {
-    console.log("selectCar", car);
     state.setSelectedCar(car);
     router.push("/rent");
   }
 
   useEffect(() => {
-    console.log("carList", session);
     state.setLayout({ filters, email: session.user });
   }, []);
 

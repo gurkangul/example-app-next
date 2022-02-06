@@ -18,9 +18,7 @@ export default function Rent({ session }: any) {
     return useCheckRoute();
   }
 
-  console.log(state?.selectedCar);
   async function rentClick() {
-    console.log(payment);
     let result = await API.ORDER(session, state?.selectedCar?.id);
     if (result.status == "Success") {
       notifications.showNotification({

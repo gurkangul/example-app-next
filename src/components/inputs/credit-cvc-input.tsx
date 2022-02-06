@@ -7,7 +7,6 @@ export default function CreditCvcInput({ onChange }: { onChange: Function }) {
   const [error, setError] = useState<boolean>(false);
   const handleChange = (e: any) => {
     return creditCardCvcValidation(e.target.value, (success: any, cvc: any) => {
-      console.log(success, cvc);
       setError(!success);
       setCvc(cvc);
       if (success) onChange(cvc);
