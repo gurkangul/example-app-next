@@ -14,15 +14,14 @@ export default function Rent({ session }: any) {
   const state = useStore();
   const notifications = useNotifications();
 
-  if (!state.selectedCar) {
+  if (state?.selectedCar?.id == 0) {
     return useCheckRoute();
   }
 
   console.log(state?.selectedCar);
   async function rentClick() {
     console.log(payment);
-    let carId = state?.selectedCar?.id || 0;
-    let result = await API.ORDER(session, carId);
+    let result = await API.ORDER(session, state?.selectedCar?.id);
     if (result.status == "Success") {
       notifications.showNotification({
         message: "Order successfully",
@@ -39,7 +38,7 @@ export default function Rent({ session }: any) {
   return (
     <>
       <Group position="center">
-        {state.selectedCar && (
+        {state?.selectedCar?.id != 0 && (
           <CarCard isButton={false} item={state.selectedCar} />
         )}
         <Space w="lg" />

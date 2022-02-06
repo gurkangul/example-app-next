@@ -6,7 +6,31 @@ const useStore = create((set: any) => ({
     filters: null,
     email: "",
   },
-  selectedCar: null,
+  selectedCar: {
+    id: 0,
+    car: {
+      name: "",
+      transmission: "",
+      brand: {
+        name: "",
+      },
+      class: "",
+      fuel: "",
+      image: {
+        large: "",
+        medium: "",
+        small: "",
+      },
+    },
+    vendor: {
+      logoUrl: "",
+      name: "",
+    },
+    currency: "",
+    pricing: {
+      totalPrice: 0,
+    },
+  },
   filters: {},
   setFilters: (data: any) => set(() => ({ filters: data })),
   setSelectedCar: (data: ICar) => set(() => ({ selectedCar: data })),
