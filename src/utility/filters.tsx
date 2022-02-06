@@ -1,4 +1,4 @@
-import { ICar } from "../src/hooks/interfaces";
+import { ICar } from "../interfaces";
 
 export function filteredCarList(
   filter: any,
