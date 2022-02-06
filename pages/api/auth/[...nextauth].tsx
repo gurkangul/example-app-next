@@ -48,6 +48,8 @@ const options = (req: any, res: any) => {
         return session;
       },
     },
+    secret:
+      process.env.AUTH_SECRET || "sdf45g54g1h2möçj5k6gf66hj___fdfg112kjhl",
     pages: {
       error: "/login", // Changing the error redirect page to our custom login page
     },
