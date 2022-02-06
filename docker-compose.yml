@@ -6,6 +6,7 @@ services:
         build: ./
         environment:
             NEXTAUTH_URL: https://task.gurkangul.dev/
+            API_URL: https://ylc-fr-case.herokuapp.com/api
         ports:
             - 5050:5050
         restart: unless-stopped

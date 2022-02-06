@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
 // tslint:disable-next-line:<rule name>
 import CredentialsProvider from "next-auth/providers/credentials";
-import jwt_decode from "jwt-decode";
-import { ILoginUser } from "../../../src/interfaces";
 import { API } from "../../../src/api";
 
 const options = (req: any, res: any) => {
@@ -17,10 +15,9 @@ const options = (req: any, res: any) => {
           },
           password: { label: "Password", type: "password" },
         },
-        async authorize(credentials: ILoginUser) {
+        async authorize(credentials: any) {
           try {
             const result = await API.SIGN_IN(credentials);
-            console.log(result, "****************************");
             if (result?.status == "Success") {
               return result;
             }
