@@ -18,8 +18,6 @@ const options = (req: any, res: any) => {
         async authorize(credentials: any) {
           try {
             const result = await API.SIGN_IN(credentials);
-            console.log("********************************");
-            console.log(result);
             if (result?.status == "Success") {
               return result;
             }
