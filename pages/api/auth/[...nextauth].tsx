@@ -18,6 +18,8 @@ const options = (req: any, res: any) => {
         async authorize(credentials: any) {
           try {
             const result = await API.SIGN_IN(credentials);
+            console.log("********************************");
+            console.log(result);
             if (result?.status == "Success") {
               return result;
             }
@@ -56,18 +58,3 @@ const options = (req: any, res: any) => {
 export default (req: any, res: any) => {
   NextAuth(req, res, options(req, res));
 };
-
-// function setToken(req: any, res: any) {
-//   res.setHeader(
-//     'Set-Cookie',
-//     cookie.serialize('token', req.body.token, {
-//       httpOnly: true,
-//       secure: process.env.NODE_ENV == 'development',
-//       maxAge: 1000 * 60 * 60,
-//       sameSite: 'strict',
-//       path: '/',
-//     })
-//   )
-//   res.statusCode = 200
-//   res.json({ success: true })
-// }
