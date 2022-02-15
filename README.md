@@ -10,4 +10,10 @@ First, run the development server:
 npm run dev
 ```
 
+## Test
+
+```bash
+npm run test && npm run e2e
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

@@ -19,6 +19,7 @@ export default function CreditCardInput({ onChange }: { onChange: Function }) {
   };
   return (
     <TextInput
+      aria-label="credit-card"
       error={error}
       placeholder="Card Number"
       value={card}

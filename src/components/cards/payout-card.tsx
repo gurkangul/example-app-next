@@ -38,6 +38,7 @@ export default function PayoutCard({ setPayment }: any) {
         <Text color="blue">Credit Card</Text>
         <SimpleGrid cols={1} spacing="md">
           <Input
+            aria-label="credit-card-owner-name"
             placeholder="Card Owner Name"
             onChange={(e: any) =>
               setCreditCardInfo({

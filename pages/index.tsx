@@ -44,6 +44,7 @@ export default function Home({ carList, filters, session }: any) {
 
 export async function getServerSideProps(context: any) {
   const session = await getSession(context);
+  console.log(session);
   if (!session) {
     return {
       redirect: {
@@ -53,6 +54,7 @@ export async function getServerSideProps(context: any) {
     };
   }
   let result = await API.CAR_LIST(session);
+  console.log(result);
   let filters = await API.FILTERS(session);
   return {
     props: {

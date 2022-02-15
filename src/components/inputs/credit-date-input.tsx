@@ -19,6 +19,7 @@ export default function CreditDateInput({ onChange }: { onChange: Function }) {
   };
   return (
     <TextInput
+      aria-label="credit-card-date"
       error={error}
       placeholder="Date"
       value={date}

@@ -15,6 +15,7 @@ export default function CreditCvcInput({ onChange }: { onChange: Function }) {
   };
   return (
     <TextInput
+      aria-label="credit-card-cvc"
       error={error}
       placeholder="Cvc"
       value={cvc}

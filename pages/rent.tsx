@@ -43,6 +43,7 @@ export default function Rent({ session }: any) {
         <PayoutCard setPayment={setPayment}></PayoutCard>
         {payment && (
           <Button
+            id="btn_pay"
             variant="light"
             color="green"
             fullWidth

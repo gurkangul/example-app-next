@@ -102,7 +102,7 @@ export function AuthenticationForm({
         )}
         {!noSubmit && (
           <Group position="apart" mt="xl">
-            <Button color="blue" type="submit">
+            <Button color="blue" type="submit" id="login">
               Login
             </Button>
           </Group>

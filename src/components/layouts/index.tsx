@@ -12,20 +12,16 @@ import {
   Navbar,
 } from "@mantine/core";
 import { signOut, useSession } from "next-auth/react";
-
 import { useRouter } from "next/router";
 import React from "react";
 import FilterAccordion from "../accordions/filter-accordion";
 import useStore from "../../store";
-
 export default function Layout(props: any) {
   const state = useStore();
-
   const { data: session, status } = useSession();
   const loading = status === "loading";
   const [opened, setOpened] = useState(false);
   const [showNav, setShowNav] = useState(false);
-
   const router = useRouter();
   useEffect(() => {
     if (!loading) {
@@ -39,7 +35,6 @@ export default function Layout(props: any) {
       }
     }
   }, [loading]);
-
   useEffect(() => {
     switch (router.pathname) {
       case "/":
@@ -50,7 +45,6 @@ export default function Layout(props: any) {
         break;
     }
   }, [router.pathname]);
-
   return (
     <>
       <Container size={1300}>
@@ -100,17 +94,6 @@ export default function Layout(props: any) {
             </Navbar>
           }
         >
-          {/* <Grid justify="center" align="center">
-        {cars.length > 0 ? (
-          cars?.map((car: ICar) => (
-            <Grid.Col lg={6} md={6} sm={6} key={car.id}>
-              <CarCard item={car} />
-            </Grid.Col>
-          ))
-        ) : (
-          <p>No cars found</p>
-        )}
-      </Grid> */}
           <main>{props.children}</main>
         </AppShell>
       </Container>

@@ -16,7 +16,7 @@ export default function CarCard({
   const [car, setCar] = useState<ICar>({ ...item });
 
   return (
-    <div style={{ width: 420, marginTop: 20 }}>
+    <div data-testid={car.id} style={{ width: 420, marginTop: 20 }}>
       <Paper padding={10} shadow="xs">
         <Image src={car?.vendor?.logoUrl} height={40} fit="contain" />
         <Img image={car.car?.image} />
@@ -35,6 +35,7 @@ export default function CarCard({
         <Space h={10} />
         {isButton && (
           <Button
+            id={"rent-" + car.id}
             variant="light"
             color="green"
             fullWidth
