@@ -1,6 +1,3 @@
-## Demo
-
-[https://task.gurkangul.dev/](https://task.gurkangul.dev/)
 
 ## Getting Started
 
